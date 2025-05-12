@@ -1,6 +1,7 @@
 package demoqa.pages;
 
 import demoqa.core.BasePage;
+import demoqa.pages.frame.FramePage;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
@@ -19,5 +20,12 @@ public class HomePage extends BasePage {
     public LoginPage selectFormAuthentication() {
         click(formAuth,0,200);
         return new LoginPage(driver,wait);
+    }
+    @FindBy(css = "a[href='/nested_frames']")
+    WebElement nestedFrames;
+
+    public FramePage selectNestedFrames() {
+        click(nestedFrames,0,300);
+        return new FramePage(driver,wait);
     }
 }

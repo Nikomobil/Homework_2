@@ -23,7 +23,7 @@ public class BasePage {
     }
 
     public void click(WebElement element, int x, int y) {
-        js.executeScript("window.scrollBy({},{})", x, y);
+        js.executeScript("window.scrollBy(" + x + "," + y + ")");
         click(element);
     }
 
