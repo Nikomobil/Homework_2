@@ -1,6 +1,7 @@
 package demoqa.pages;
 
 import demoqa.core.BasePage;
+import demoqa.pages.alerts.AlertsPage;
 import demoqa.pages.frame.FramePage;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
@@ -27,5 +28,13 @@ public class HomePage extends BasePage {
     public FramePage selectNestedFrames() {
         click(nestedFrames,0,300);
         return new FramePage(driver,wait);
+    }
+
+    @FindBy(css = "a[href='/javascript_alerts']")
+    WebElement jsAlerts;
+
+    public AlertsPage selectJsAlerts() {
+        click(jsAlerts,0,200);
+        return new AlertsPage(driver,wait);
     }
 }
