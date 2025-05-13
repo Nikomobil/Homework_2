@@ -1,6 +1,7 @@
 package demoqa.pages.frame;
 
 import demoqa.core.BasePage;
+import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
@@ -34,5 +35,22 @@ public class FramePage extends BasePage {
         return this;
     }
 
-
+    public static int countAllFrames(WebDriver driver) {
+        driver.switchTo().defaultContent();
+        int total = countFramesRecursive(driver);
+        System.out.println("Total number of all frames: " + total);
+        return total;
+    }
+    private static int countFramesRecursive(WebDriver driver) {
+        int count = 0;
+        List<WebElement> frames = driver.findElements(By.tagName("frame"));
+        frames.addAll(driver.findElements(By.tagName("iframe"))); // на всякий случай
+        count += frames.size();
+        for (int i = 0; i < frames.size(); i++) {
+            driver.switchTo().frame(i);
+            count += countFramesRecursive(driver); // рекурсивный вызов для вложенных фреймов
+            driver.switchTo().parentFrame(); // возвращаемся обратно
+        }
+        return count;
+    }
 }

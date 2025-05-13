@@ -18,7 +18,8 @@ public class IFrame extends TestBase {
     public void iFrameTest() {
         new FramePage(app.driver, app.wait)
                 .returnListOfFrames()
-                .switchToFrameByIndex(1);
+                .switchToFrameByIndex(1)
+                .countAllFrames(app.driver);
 
     }
 }
