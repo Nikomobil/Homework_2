@@ -2,7 +2,10 @@ package demoqa.pages;
 
 import demoqa.core.BasePage;
 import demoqa.pages.alerts.AlertsPage;
+import demoqa.pages.drodown.DropDownPage;
 import demoqa.pages.frame.FramePage;
+import demoqa.pages.hovers.HoversPage;
+import demoqa.pages.slider.HorizontalSliderPage;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
@@ -36,5 +39,28 @@ public class HomePage extends BasePage {
     public AlertsPage selectJsAlerts() {
         click(jsAlerts,0,200);
         return new AlertsPage(driver,wait);
+    }
+
+    @FindBy(css = "a[href='/horizontal_slider']")
+    WebElement horizontalSlider;
+
+    public HorizontalSliderPage selectHorizontalSlider() {
+        click(horizontalSlider,0,200);
+        return new HorizontalSliderPage(driver,wait);
+    }
+    @FindBy(css = "a[href='/hovers']")
+    WebElement hovers;
+
+    public HoversPage selectHovers() {
+        click(hovers,0,200);
+        return new HoversPage(driver,wait);
+    }
+
+    @FindBy(css = "a[href='/dropdown']")
+    WebElement dropDown;
+
+    public DropDownPage selectDropDown() {
+        click(dropDown,0,200);
+        return new DropDownPage(driver,wait);
     }
 }
